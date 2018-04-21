@@ -1,0 +1,80 @@
+ {include file="index/header" /} 
+
+
+
+
+
+ 
+ <p id="t"></p> <p id="l"></p>
+</body>
+</html>
+ <p>商品列表：</p>
+ 
+ <table class="table table-bordered table-hover ">
+ 	<thead>
+ 		<tr  ><th > 排序</th><th > 商品标题</th><th > 价格</th><th >  </th>
+ 		</tr>
+ 	</thead>
+
+ 	<tbody>
+ 		{volist name='show' id='user'}
+ 		
+ 		<tr  ><th> {$user.sort} </th><td> <a href="__ROOT__/index/index/view/id/{$user.id} ">{$user.title|mb_substr=0,50,'utf-8' }</a></td><td> <span class="label label-default"></span> {if condition="$user.price" }<span class="label label-primary">{$user.price}元</span>{else /} <span class="label label-success">免费}</span>  {/if}</td><td>   
+	
+ 			{if condition="($user.price > 0) AND ($user.buy == 0)" }
+
+ 			<!-- ($name == 1) OR ($name > 100) -->
+ 			<!-- ($user.price > 0) OR ($user.buy >0) -->
+
+
+
+ 			{if condition="$Think.cookie.phone"} <a href="__ROOT__/alipay/alipayapi.php?WIDtotal_fee={$user.price}&WIDsubject={$user.title|mb_substr=0,20,'utf-8' }&WIDout_trade_no={$user.id}{$Think.cookie.phone}{$date}&WIDbody={$user.id}&WIDshow_url=" id="btn" class="btn btn-primary" target="_blank"  >立即购买</a>
+ 			{else /}  
+ 			
+ 			<a href="__ROOT__/index/index/pay/?WIDtotal_fee={$user.price}&WIDsubject={$user.title|mb_substr=0,20,'utf-8' }&WIDout_trade_no={$user.id}{$Think.cookie.phone}{$date}&WIDbody={$user.id}&WIDshow_url=&lesson={$user.id}" id="btn" class="btn btn-primary" target="_blank"  >立即购买</a>
+ 			{/if} 
+
+ 			{else /} 
+
+ 			
+ 			<a href="__ROOT__/index/index/view/id/{$user.id}" class="btn btn-success" target="_blank"  >立即播放</a>
+ 			
+
+
+ 			{/if}
+
+
+ 			<!-- {if condition="$user.buy"} 已购买过 <a href="__ROOT__/index/index/view/id/{$user.id}" class="btn btn-success" target="_blank"  >立即播放{$user.buy}</a>
+				{/if} -->
+ 			
+ 		</td> </tr>
+ 		{/volist}
+ 	</tbody>
+ </table>
+ {$show->render()}
+ 
+ 
+ 
+
+</div>
+<div> 
+ <footer class="bs-docs-footer navbar-fixed-bottom  " style="
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 100px;
+    margin-bottom: 0px;
+    color: #99979c;
+    text-align: center;
+    background-color: #2a2730">
+  <div class="container">
+
+    <p>推荐使用谷歌浏览器访问
+</p>
+
+    
+  </div>
+</footer>
+ </div>
+
+ </body>
+ </html>

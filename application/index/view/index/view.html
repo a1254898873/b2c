@@ -1,0 +1,230 @@
+{include file="index/header" /}
+
+
+      {if condition="($num >=1) OR ($list.price == 0)"} 
+	   
+    <div class="page-header">
+  <h3>{$list.title} </h3>
+</div>
+       <div  class="container" style="padding: 0px"> 
+	  
+	 <div class="col-lg-6">
+	  
+	  <a href='{$list.img}' class = 'cloud-zoom' id='zoom1'
+            rel="zoomWidth:300,zoomHeight:300,adjustX: 10, adjustY:-4" position="left">
+            <img src="{$list.img}" alt='' width=100% title="放大镜" />
+        </a>
+	 </div>
+	 
+	  <div class="col-lg-6">
+       <video width="100%"  controls="controls"    id="myVideo"  >
+
+        <source src="{$list.address}" type="video/mp4" />
+        
+      </video> 
+    </div>
+	
+	</div>
+	
+	<br/>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					
+						购买后显示的内容
+					
+				</div>
+				<div class="panel-body">
+					{$list.product}
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+ 
+	
+      
+
+	  
+      {else /} 
+
+      <div class="col-md-12 column">
+			<div class="jumbotron well">
+				<h1>
+					你还没有购买该商品
+				</h1>
+				<br/>
+				<p>
+					如果已购买本节课程，请刷新页面。如果购买后没有显示已购买请联系客服并出示购买截图
+				</p>
+				<p>
+					 <form  id='formpay' name='formpay' method='post' action='https://pay.paysapi.com'>
+        <p style="display:none">商品名称<input name='goodsname' id='goodsname' type='text'  value='{$list.title}' /></p>
+        <p style="display:none" >付款方式<input name='istype' id='istype' type='text' value='1' /></p>
+        <p style="display:none">秘钥<input name='key' id='key' type='text' value='{$key_alipay}'/></p>
+        <p style="display:none">回调地址<input name='notify_url' id='notify_url' type='text' value='{$url_notify}'/></p>
+        <p style="display:none">订单号<input name='orderid' id='orderid' type='text' value='{$listid}'/></p>
+        <p style="display:none">客户id<input name='orderuid' id='orderuid' type='text' value='{$Think.cookie.phone}'/></p>
+        <p style="display:none">价格<input name='price' id='price' type='text' value='{$list.price}'/></p>
+        <p style="display:none">返回页面<input name='return_url' id='return_url' type='text' value='{$url_return}'/></p>
+        <p style="display:none">商户uid<input name='uid' id='uid' type='text' value='f5489d1262ced432d550b458'/></p>
+        <p><input type='submit'  value="支付宝购买" id="btn" class="btn btn-primary"></p>
+                      </form>
+					  
+					  
+					<form  id='formpay' name='formpay' method='post' action='https://pay.paysapi.com'>
+        <p style="display:none">商品名称<input name='goodsname' id='goodsname' type='text'  value='{$list.title}' /></p>
+        <p style="display:none" >付款方式<input name='istype' id='istype' type='text' value='2' /></p>
+        <p style="display:none">秘钥<input name='key' id='key' type='text' value='{$key_wechat}'/></p>
+        <p style="display:none">回调地址<input name='notify_url' id='notify_url' type='text' value='{$url_notify}'/></p>
+        <p style="display:none">订单号<input name='orderid' id='orderid' type='text' value='{$listid}'/></p>
+        <p style="display:none">客户id<input name='orderuid' id='orderuid' type='text' value='{$Think.cookie.phone}'/></p>
+        <p style="display:none">价格<input name='price' id='price' type='text' value='{$list.price}'/></p>
+        <p style="display:none">返回页面<input name='return_url' id='return_url' type='text' value='{$url_return}'/></p>
+        <p style="display:none">商户uid<input name='uid' id='uid' type='text' value='f5489d1262ced432d550b458'/></p>
+        <p><input type='submit'  value="微信购买" id="btn" class="btn btn-primary"></p>
+                      </form>  
+				</p>
+			</div>
+		</div>
+      
+    
+
+
+      
+     
+	     
+     <div  class="container" >  
+      {/if} 
+	  
+   
+
+
+<nav aria-label="...">
+  <ul class="pager">
+    <!-- 上一页 -->
+    {if condition="$up neq ''"} 
+    <li class="previous  "><a href="{$up.id}"><span aria-hidden="true">&larr;</span> 上一个： {$up.title}</a></li>
+    {else /} 
+    <li class="previous  disabled"><span aria-hidden="true">&larr; 没有了</span> </li>
+    {/if}
+    <!-- 下一页 -->
+    {if condition="$next neq ''"} 
+    <li class="next"><a href="{$next.id}"> 下一个： {$next.title} <span aria-hidden="true">&rarr;</span></a></li>
+    {else /} 
+    <li class="next disabled"><span aria-hidden="true">&rarr; 没有了</span> </li>
+    {/if}
+  </ul>
+</nav>  
+
+
+
+   <div class="panel panel-primary">
+    <div class="panel-heading">
+      {$list.title}  
+    </div>
+    <div class="panel-body">
+
+      <p>排序：{$list.sort}</p>
+      <p>标签：{$list.label}</p>
+      <p>价格：{$list.price}</p>
+	  {if condition="$list.lesson!=null"}
+	  <p>附件：<a href="__ROOT__\uploads\{$list.lesson}">点击下载附件</a></p>
+	  {/if}
+      <p>商品描述：{$list.content|default=""|}</p>
+      
+
+    </div>
+    <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item">{$list.create_time}</li>
+
+    </ul>
+  </div>
+
+ 
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">分享该商品</div>
+  <div class="panel-body" >
+    
+	  <a href="javascript:void(0)" class="share" style=" text-align:center;font-size:16px; display:block; text-decoration:none; padding:10px; border:1px dashed #cfcfcf;">点击分享</a>
+ 
+	 
+  </div>
+</div>
+
+
+   <div class="panel panel-primary">
+   <div class="panel-heading">
+					
+						商品评论
+					
+				</div>
+	<div class="panel-body">			
+				
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+		{volist name='content' id='text'}
+			<b>
+				用户：{$text.phone}
+			</b>
+			<br/><br/>
+			<p>
+				评论内容：{$text.content}
+			</p>
+			<hr>
+			{/volist}
+			{$content->render()}
+		</div>
+	</div>
+    </div>
+     </div>
+	 
+	
+	 <div class="panel panel-primary">
+   <div class="panel-heading">
+					
+						提交商品评论
+					
+				</div>
+	<div class="panel-body">			
+				
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			 <form  action="__ROOT__/index/index/content" method="post" enctype="multipart/form-data">
+ 
+
+  <div class="form-group" >
+    
+   
+      <textarea class="form-control" id="content" name="content" value="" placeholder="评论内容" rows="3"></textarea>
+	  <p style="display:none">商品编号<input name='sid' id='sid type='text' value='{$sid}'/></p>
+  </div>
+
+ 
+  
+
+  
+<button type="submit" id="btn" class="btn btn-primary"  >提交评论</button>
+</form>
+			
+		</div>
+	</div>
+    </div>
+     </div>
+	
+
+</div>
+
+<script type="text/javascript" src="__ROOT__/static/js/smohan.pop&share.js"></script> 
+<script type="text/javascript" src="__ROOT__/static/js/qrcode.min.js"></script> 
+
+{include file="index/footer" /}

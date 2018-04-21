@@ -1,0 +1,105 @@
+ {include file="index/header" /} 
+ <!--  轮播      -->
+		
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-6 column">
+		<div class="trent-slider">
+{volist name='img' id='pic'}
+  <div class="t-slide current-t-slide">
+    <img src="{$pic.img}" alt="" />
+  </div>
+  
+  {/volist}
+  <div class="t-slider-controls">
+    <div class="arrow right-arrow">
+      <div class="arrow-container">
+        <div class="arrow-icon"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+      </div>
+    </div>
+    <div class="arrow left-arrow">
+      <div class="arrow-container">
+        <div class="arrow-icon"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+      </div>
+    </div>
+    <div class="t-load-bar">
+      <div class="inner-load-bar"></div>
+    </div>
+    <div class="t-dots-container">
+      <div class="t-slide-dots-wrap">
+        <div class="t-slide-dots">
+ 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+		</div>	
+		<div class="col-md-6 column">
+			<div class="jumbotron well">
+				<h1>
+					欢迎来到本站
+				</h1>
+				<br/><br/><br/>
+				<h2>
+					这是一个b2c电商平台
+				</h2>
+				<br/><br/>
+				<h2>
+				站长微信：a1254898873
+				</h2>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<br/>
+  <!--  轮播      -->
+ 
+ 
+ 
+ <p>商品列表：</p>
+ 
+ <table class="table table-bordered table-hover ">
+ 	<thead>
+ 		<tr  ><th > 序号</th><th > 商品标题</th><th > 标签</th><th > 价格</th><th >  </th>
+ 		</tr>
+ 	</thead>
+
+ 	<tbody>
+ 		{volist name='show' id='user'}
+ 		
+ 		<tr  ><th> {$user.sort} </th><td> <a href="__ROOT__/index/index/view/id/{$user.id} ">{$user.title|mb_substr=0,50,'utf-8' }</a></td><td>{$user.label}</td><td>{if condition="$user.price" }<span class="label label-primary">{$user.price}元</span>{else /} <span class="label label-success">免费</span>  {/if}</td><td>   
+	
+ 			
+
+ 			<!-- ($name == 1) OR ($name > 100) -->
+ 			<!-- ($user.price > 0) OR ($user.buy >0) -->
+
+
+
+ 			
+
+ 			
+ 			<a href="__ROOT__/index/index/view/id/{$user.id}" class="btn btn-success" target="_blank"  >点击进入</a>
+ 			
+
+
+ 			
+
+
+ 			<!-- {if condition="$user.buy"} 已购买过 <a href="__ROOT__/index/index/view/id/{$user.id}" class="btn btn-success" target="_blank"  >立即播放{$user.buy}</a>
+				{/if} -->
+ 			
+ 		</td> </tr>
+ 		{/volist}
+ 	</tbody>
+ </table>
+ {$show->render()}
+ 
+ 
+ 
+ {include file="index/footer" /}

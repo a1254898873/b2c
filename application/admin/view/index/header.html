@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+	<title>b2c商城</title>
+	
+  <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">  
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	 {css href="__CSS__/shop.css" /}
+</head>
+<body>
+     
+    
+    <nav class="navbar navbar-inverse " style=" border-radius: 0px;margin-bottom: 10px;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="__ROOT__/admin">商城后台</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+	  <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商品管理 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ><a href="__ROOT__/admin/index/add">发布商品 </a></li>
+			<li role="separator" class="divider"></li>
+            <li><a href="__ROOT__/admin/index/show">管理商品</a></li>
+         
+          </ul>
+        </li>
+		
+       <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">订单管理 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ><a href="__ROOT__/admin/index/addorder">增加订单 </a></li>
+			<li role="separator" class="divider"></li>
+            <li><a href="__ROOT__/admin/index/showorder">管理订单</a></li>
+         
+          </ul>
+        </li>      
+	  
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">会员管理 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="__ROOT__/admin/index/adduser">添加会员信息</a></li>
+			<li role="separator" class="divider"></li>
+            <li><a href="__ROOT__/admin/index/showuser">管理会员信息</a></li>
+
+         
+          </ul>
+        </li>
+		 
+		 <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">轮播设置 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="__ROOT__/admin/index/addpicture">添加图片</a></li>
+			<li role="separator" class="divider"></li>
+            <li><a href="__ROOT__/admin/index/showpicture">管理图片</a></li>
+
+         
+          </ul>
+        </li>
+		 
+		 <li ><a href="__ROOT__/admin/index/showfeedback">反馈查看</a></li>
+		 <li ><a href="__ROOT__/admin/index/showcontent">评论查看</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li> <a href="__ROOT__/index/index/index" target="_blank">前台首页</a>
+ </li>
+        <li>{if condition="$Think.cookie.phone==15625788691"} <a href="#">{$Think.cookie.phone} 管理员您好！</a>
+{else /} <script>window.location.href="__ROOT__/index/index/login"</script> 
+{/if}</li>
+        <li> <a href="__ROOT__/index/index/logout" target="_blank">退出</a>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!-- 这个是全局容器 -->
+<div class="container-fluid">
+ <!-- 以下是左右两侧 -->
+
+<div class="row">
+  <!-- 左侧 -->
+  <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+
+    <!-- 折叠开始 -->
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" 
+           href="#collapseOne">
+          菜单
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse">
+      <div class="panel-body">
+        常用功能
+      </div>
+    </div>
+  </div>
+ 
+   
+</div>
+    <!-- 折叠结束 -->
+    <div class="list-group">
+  <a href="#" class="list-group-item disabled ">
+    商品管理
+  </a>
+  <a href="__ROOT__/admin/index/add" class="list-group-item">添加商品</a>
+  <a href="__ROOT__/admin/index/show" class="list-group-item">商品管理</a>
+
+</div>
+<div class="list-group">
+  <a href="#" class="list-group-item disabled">
+    订单管理
+  </a>
+  <a href="__ROOT__/admin/index/addorder" class="list-group-item">订单添加</a>
+  <a href="__ROOT__/admin/index/showorder" class="list-group-item">订单管理</a>
+</div>
+<div class="list-group">
+  <a href="#" class="list-group-item disabled">
+    会员管理  
+  </a>
+  <a href="__ROOT__/admin/index/adduser" class="list-group-item">添加会员</a>
+
+  <a href="__ROOT__/admin/index/showuser" class="list-group-item">会员管理</a>
+
+</div>
+
+<div class="list-group">
+  <a href="#" class="list-group-item disabled">
+    轮播设置 
+  </a>
+  <a href="__ROOT__/admin/index/addpicture" class="list-group-item">添加图片</a>
+
+  <a href="__ROOT__/admin/index/showpicture" class="list-group-item">图片管理</a>
+
+</div>
+</div>
+<!-- 右侧 -->
+  <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+
+
+<ol class="breadcrumb">
+  <li><a href="__ROOT__/admin">首页</a></li>
+  <li><a href="__ROOT__/admin">后台首页</a></li>
+  <li class="active">后台介绍</li>
+</ol>

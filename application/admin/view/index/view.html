@@ -1,0 +1,80 @@
+{include file="index/header" /}  
+<br/>
+ <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{$list.0.title}  </h3>
+  </div>
+  <br/>
+   <div  class="container" style="padding: 0px"> 
+	  
+	 <div class="col-lg-6">
+	  
+	  <a href='{$list.0.img}' class = 'cloud-zoom' id='zoom1'
+            rel="adjustX: 10, adjustY:-4 " position="left">
+            <img src="{$list.0.img}" alt='' width=100% title="放大镜" />
+        </a>
+	 </div>
+	 
+	  <div class="col-lg-6">
+       <video width="100%"  controls="controls"    id="myVideo"   >
+
+        <source src="{$list.0.address}" type="video/mp4" />
+        
+      </video> 
+    </div>
+	
+	</div>
+  <div class="panel-body">
+
+
+    
+
+    
+
+    <p>排序：{$list.0.sort}</p>
+	<p>商品描述：{$list.0.content|default=""|}</p>
+    <p>播放地址：{$list.0.address}</p>
+    <p>购买内容：{$list.0.product}</p>
+    <p>标签：{$list.0.label}</p>
+    <p>价格：{$list.0.price}</p>
+    <p><a href="__ROOT__\uploads\{$list.0.lesson}">点击下载附件</a></p>
+  </div>
+  <!-- List group -->
+  <ul class="list-group">
+    <li class="list-group-item">{$list.0.create_time |date="y-m-d h:i",###}</li>
+    
+  </ul>
+</div>
+
+<!--  <div class="panel panel-default">
+  <div class="panel-body">
+    <p class="text-center"><strong>{$list.0.title}</strong></p>
+    <p class="text-center">{$list.0.create_time |date="y-m-d h:i",###}</p>
+    {$list.0.content|default="这家伙很懒，什么也没留下"|}
+  </div>
+</div>  -->
+ 
+
+    <nav aria-label="...">
+      <ul class="pager">
+        <!-- 上一页 -->
+        {if condition="$up neq ''"} 
+            <li class="previous"><a href="{$up}"><span aria-hidden="true">&larr;</span> 上一页</a></li>
+        {else /} 
+            <li class="previous disabled"><span aria-hidden="true">&larr; 没有了</span> </li>
+        {/if}
+        <!-- 下一页 -->
+        {if condition="$next neq ''"} 
+            <li class="next"><a href="{$next}"><span aria-hidden="true">&larr;</span> 下一页</a></li>
+        {else /} 
+            <li class="next disabled"><span aria-hidden="true">&larr; 没有了</span> </li>
+        {/if}
+      </ul>
+    </nav>
+  
+
+ 
+ 
+  {include file="index/footer" /}
+
+

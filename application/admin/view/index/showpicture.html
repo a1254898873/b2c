@@ -1,0 +1,48 @@
+{include file="index/header" /} 
+ 
+  <p>商品列表：</p>
+   
+<table class="table table-bordered table-hover "  >
+<thead>
+<tr  ><th > ID</th><th > 图片名字</th><th >设置  </th>
+</tr>
+</thead>
+
+<tbody>
+{volist name='show' id='user'}
+  
+    <tr  ><th> {$user.id} </th><td> {$user.name }</td><td>   <a href="#"  id="btn" class="btn btn-danger" data-toggle="modal" data-target="#myModal{$user.id}"  >删除 </a>  </td> </tr>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal{$user.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">提示</h4>
+      </div>
+      <div class="modal-body">
+        删除确认...{$user.name }
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+       <!--  <button type="button" class="btn btn-primary">确定删除</button> -->
+       <a href="__ROOT__/admin/index/deletepicture/id/{$user.id}"  id="btn" class="btn btn-danger"    >确定删除 </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{/volist}
+</tbody>
+</table>
+   
+
+
+
+{$show->render()}
+ 
+ 
+ 
+ 
+ {include file="index/footer" /}
